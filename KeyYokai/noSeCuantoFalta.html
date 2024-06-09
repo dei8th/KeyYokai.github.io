@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Llaveros</title>
+  <style>
+    
+    body {
+
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      background-color: #ebfede;
+      color: #be3d41;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #be3d41;
+      color: #ebfede;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #be3d41;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #be3d41;
+      text-decoration: none;
+    }
+
+    .container {
+      margin: 20px auto;
+      width: 80%;
+      text-align: center;
+    }
+
+
+
+    .llavero {
+      border: 1px solid #be3d41;
+      padding: 20px;
+      margin: 20px;
+      display: inline-block;
+      width: 30%;
+    }
+
+    .llavero img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .llavero h2 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .llavero p {
+      margin: 5px 0;
+    }
+
+    button {
+      background-color: #be3d41;
+      color: #ebfede;
+      padding: 10px 20px;
+      border: 1px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border: 2px solid;
+    }
+
+    form button:hover {
+      background-color: #bc6164;
+    }
+
+    #lista-carrito {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    #total-compra {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    #lista-carrito {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #lista-carrito li {
+      margin-bottom: 0.5rem;
+      padding: 1rem;
+      border-radius: 5px;
+      background-color: #ebfede;
+      color: #be3d41;
+      border: 1px solid #be3d41;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #lista-carrito li:last-child {
+      margin-bottom: 0;
+    }
+
+    #total-compra {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      text-align: right;
+    }
+
+    #hora-actual {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #be3d41;
+    }
+    
+
+  </style>
+</head>
+
+<body>
+
+    <header>
+    <h1>Tienda de Llaveros</h1>
+    <nav>
+      <ul>
+        <a href="#inicio">Inicio || </a><a href="#productos">Productos || </a><a href="#datos">Datos de entrega || </a><a href="#carrito" onclick="mostrarCarrito()">Carrito</a>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container" id="inicio">
+    <center>
+      <h2>Bienvenido a nuestra tienda de llaveros</h2>
+      <p>¡Encuentra los llaveros más elegantes y funcionales aquí!</p>
+    </center>
+  </div>
+
+  <div class="container" id="productos">
+    <h2>Nuestros productos</h2>
+    <div class="llavero">
+      <img src="C:\Users\dei8h\OneDrive\Imágenes/cuero.jpg" alt="Llavero 1">
+      <h2>Llavero de Cuero</h2>
+      <p>Precio: $45</p>
+      <p>Descripción: Llavero de cuero genuino con diseño divertido.</p>
+      <form onsubmit="return false">
+        <label for="cantidad1">Cantidad:</label>
+        <select id="cantidad1" name="cantidad1" onchange="mostrarAlerta('cantidad1', this.value)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select><br><br>
+        <label for="color1">Color de fondo:</label>
+        <input type="color" id="color1" name="color1" onchange="mostrarAlerta('color1', this.value)"><br><br>
+      </form>
+
+      <form onsubmit="return false">
+        <label for="diseno">Diseño:</label><br>
+        <input type="radio" id="diseno1" name="diseno" value="perro cafe" onchange="mostrarAlerta('Diseño', 'perro cafe')">
+        <label for="diseno1">perro cafe</label>
+        <input type="radio" id="diseno2" name="diseno" value="perro naranja" onchange="mostrarAlerta('Diseño', 'perro naranja')">
+        <label for="diseno2">perro naranja</label><br><br>
+        <button onclick="agregarAlCarrito('Llavero cuero', 45, document.getElementById('cantidad7').value, document.querySelector('input[name=\'diseno\']:checked').value)">Agregar al carrito</button>
+      </form>
+    </div>
+    <div class="llavero">
+      <!-- Detalles del segundo llavero -->
+      <img src="C:\Users\dei8h\OneDrive\Imágenes/metal.jpg" alt="Llavero 2">
+      <h2>Llavero de Metal</h2>
+      <p>Precio: $50</p>
+      <p>Descripción: Llavero resistente de metal con acabado brillante.</p>
+      <form onsubmit="return false">
+        <label for="cantidad2">Cantidad:</label>
+        <select id="cantidad2" name="cantidad2" onchange="mostrarAlerta('cantidad2', this.value)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select><br><br>
+        <label for="color1">Color de fondo:</label>
+        <input type="color" id="color1" name="color1" onchange="mostrarAlerta('color1', this.value)"><br><br>
+      </form>
+      <form onsubmit="return false">
+        <label for="diseno">Diseño:</label><br>
+        <input type="radio" id="diseno1" name="diseno" value="guitarra blanca" onchange="mostrarAlerta('Diseño', 'guitarra blanca')">
+        <label for="diseno1">guitarra blanca</label>
+        <input type="radio" id="diseno2" name="diseno" value="guitarra negra" onchange="mostrarAlerta('Diseño', 'guitarra negra')">
+        <label for="diseno2">guitarra negra</label><br><br>
+        <button onclick="agregarAlCarrito('Llavero metal', 50, document.getElementById('cantidad7').value, document.querySelector('input[name=\'diseno\']:checked').value)">Agregar al carrito</button>
+      </form>
+    </div>
+    <div class="llavero">
+      <!-- Detalles del tercer llavero -->
+      <img src="C:\Users\dei8h\OneDrive\Imágenes/peluche.jpg" alt="Llavero 2">
+      <h2>Llavero de peluche</h2>
+      <p>Precio: $70</p>
+      <p>Descripción: Llavero adorable de gatos emocionales.</p>
+      <form onsubmit="return false">
+        <label for="cantidad3">Cantidad:</label>
+        <select id="cantidad3" name="cantidad3" onchange="mostrarAlerta('cantidad3', this.value)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select><br><br>
+      </form>
+      <form onsubmit="return false">
+        <label for="diseno">Diseño:</label><br>
+        <input type="radio" id="diseno1" name="diseno" value="guitarra blanca" onchange="mostrarAlerta('Diseño', 'gato triste')">
+        <label for="diseno1">gato triste</label>
+        <input type="radio" id="diseno2" name="diseno" value="guitarra negra" onchange="mostrarAlerta('Diseño', 'gato enojado')">
+        <label for="diseno2">gato enojado</label><br><br>
+        <button onclick="agregarAlCarrito('Llavero peluche', 70, document.getElementById('cantidad7').value, document.querySelector('input[name=\'diseno\']:checked').value)">Agregar al carrito</button>
+      </form>
+    </div>
+    <div class="llavero">
+      <img src="C:\Users\dei8h\OneDrive\Imágenes/tejido.jpg" alt="Llavero 2">
+      <h2>Llavero tejido</h2>
+      <p>Precio: $80</p>
+      <p>Descripción: Llavero tejido de una linda pareja de sol y luna.</p>
+      <form onsubmit="return false">
+        <label for="cantidad4">Cantidad:</label>
+        <select id="cantidad4" name="cantidad4" onchange="mostrarAlerta( this.value)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select><br><br>
+      </form>
+      <form onsubmit="return false">
+        <label for="diseno">Diseño:</label><br>
+        <input type="radio" id="diseno1" name="diseno" value="estrella" onchange="mostrarAlerta('Diseño','Llavero de estrella')">
+        <label for="diseno1">estrella </label>
+        <input type="radio" id="diseno2" name="diseno" value="luna" onchange="mostrarAlerta('Diseño','Llavero de luna')">
+        <label for="diseno2">luna</label><br><br>
+        <button onclick="agregarAlCarrito('Llavero tejido', 80, document.getElementById('cantidad7').value, document.querySelector('input[name=\'diseno\']:checked').value)">Agregar al carrito</button>
+      </form>
+    </div>
+    <div class="llavero">
+      <!-- Detalles del primer llavero -->
+      <img src="C:\Users\dei8h\OneDrive\Imágenes/madera.jpg" alt="Llavero 1">
+      <h2>Llavero de madera</h2>
+      <p>Precio: $45</p>
+      <p>Descripción: Llavero de manera del anime Sailor moon.</p>
+      <form onsubmit="return false">
+        <label for="cantidad5">Cantidad:</label>
+        <select id="cantidad5" name="cantidad5" onchange="mostrarAlerta('cantidad5', this.value)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select><br><br>
+        <label for="color1">Color de fondo:</label>
+        <input type="color" id="color1" name="color1" onchange="mostrarAlerta('color1', this.value)"><br><br>
+      </form>
+      <form onsubmit="return false">
+        <label for="diseno">Diseño:</label><br>
+        <input type="radio" id="diseno1" name="diseno" value="Salilor moon" onchange="mostrarAlerta('Diseño','Llavero de Salilor moon')">
+        <label for="diseno1">sailor moon</label>
+        <input type="radio" id="diseno2" name="diseno" value="mamoru chiba" onchange="mostrarAlerta('Diseño','Llavero de mamoru chiba')">
+        <label for="diseno2">mamoru chiba</label><br><br>
+        <button onclick="agregarAlCarrito('Llavero de manera', 45, document.getElementById('cantidad7').value)">Agregar
+          al carrito</button>
+      </form>
+    </div>
+    <div class="llavero">
+      <!-- Detalles del primer llavero -->
+      <img src="C:\Users\dei8h\OneDrive\Imágenes/re.jpg" alt="Llavero 1">
+      <h2>Llavero de Resina</h2>
+      <p>Precio: $65</p>
+      <p>Descripción: Llavero de resina con imagenes lindas de gatitos.</p>
+      <form onsubmit="return false">
+        <label for="cantidad6">Cantidad:</label>
+        <select id="cantidad6" name="cantidad6" onchange="mostrarAlerta('cantidad6', this.value)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select><br><br>
+        <label for="color1">Color de fondo:</label>
+        <input type="color" id="color1" name="color1" onchange="mostrarAlerta('color1', this.value)"><br><br>
+      </form>
+      <form onsubmit="return false">
+        <label for="diseno">Diseño:</label><br>
+        <input type="radio" id="diseno1" name="diseno" value="gato negro" onchange="mostrarAlerta('Diseño','Llavero de gato negro')">
+        <label for="diseno1">gato negro </label>
+        <input type="radio" id="diseno2" name="diseno" value="gato blanco" onchange="mostrarAlerta('Diseño','Llavero de gato blanco')">
+        <label for="diseno2">gato blanco</label><br><br>
+        <button onclick="agregarAlCarrito('Llavero resina', 65, document.getElementById('cantidad7').value)">Agregar
+          al carrito</button>
+      </form>
+    </div>
+    <div class="llavero">
+      <!-- Detalles del septimo llavero -->
+      <img src="C:\Users\dei8h\OneDrive\Imágenes/decorados.jpg" alt="Llavero 1">
+      <h2>Llavero decorado</h2>
+      <p>Precio: $70</p>
+      <p>Descripción: Llavero decorados con lindas fresas y diseño de Nana.</p>
+      <form onsubmit="return false">
+        <label for="cantidad7">Cantidad:</label>
+        <select id="cantidad7" name="cantidad7" onchange="mostrarAlerta('cantidad7', this.value)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select><br><br>
+        <label for="color1">Color de fondo:</label>
+        <input type="color" id="color1" name="color1" onchange="mostrarAlerta('color1', this.value)"><br><br>
+      </form>
+      <form onsubmit="return false">
+        <label for="diseno">Diseño:</label><br>
+        <input type="radio" id="diseno1" name="diseno" value="Nana" onchange="mostrarAlerta('Diseño','Llavero de Nana')">
+        <label for="diseno1">Nana </label>
+        <input type="radio" id="diseno2" name="diseno" value="Hachi" onchange="mostrarAlerta('Diseño','Llavero de Hachi')">
+        <label for="diseno2"> Hachi</label><br><br>
+        <button onclick="agregarAlCarrito('Llavero decorado', 70, document.getElementById('cantidad7').value)">Agregar
+          al carrito</button>
+      </form>
+
+    </div>
+    <div class="llavero">
+      <!-- Detalles del octavo llavero -->
+      <img src="C:\Users\dei8h\OneDrive\Imágenes/disco.jpg" alt="Llavero 1">
+      <h2>Llavero forma CD</h2>
+      <p>Precio: $100</p>
+      <p>Descripción: Llavero en forma de CD de tu banda favorita.</p>
+      <form onsubmit="return false">
+        <label for="cantidad8">Cantidad:</label>
+        <select id="cantidad8" name="cantidad8" onchange="mostrarAlerta('cantidad8', this.value)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select><br><br>
+        <label for="color1">Color de fondo:</label>
+        <input type="color" id="color1" name="color1" onchange="mostrarAlerta('color1', this.value)"><br><br>
+      </form>
+      <form onsubmit="return false">
+        <label for="diseno">Diseño:</label><br>
+        <input type="radio" id="diseno1" name="diseno" value="wave" onchange="mostrarAlerta('Diseño','Llavero de wave 0.01')">
+        <label for="diseno1">wave 0.01 </label>
+        <input type="radio" id="diseno2" name="diseno" value="sumer" onchange="mostrarAlerta('Diseño','Llavero de sumer flows 0.02')">
+        <label for="diseno2">sumer flows 0.02</label><br><br>
+        <button onclick="agregarAlCarrito('Llavero decorado', 100, document.getElementById('cantidad7').value)">Agregar al carrito</button>
+      </form>
+    </div>
+
+<header>
+    <h2>Opciones de entrega</h2>    
+    <button onclick="mostrarInformacion('estandar')">Entrega estándar</button>
+    <button onclick="mostrarInformacion('express')">Entrega express</button>
+    <button onclick="mostrarInformacion('prioritaria')">Entrega prioritaria</button>    
+    <div id="info_entrega"></div>
+</header>
+
+    <header>
+      <div class="container" id="datos">
+        <h2>Datos de entrega</h2><br>
+        <label for="Nombre1">Nombre:</label>
+        <input type="text" id="Nombre1" name="Nombre1" onchange="mostrarAlerta('Nombre1', this.value)"><br><br>
+        <label for="fecha1">Fecha preferente de entrega:</label>
+        <input type="date" id="fecha1" name="fecha1" onchange="mostrarAlerta('fecha1', this.value)"><br><br>
+        <label for="numero1">Codigo postal:</label>
+        <input type="text" id="numero1" name="numero1" onchange="mostrarAlerta('Código Postal', this.value)" maxlength="5"><br><br>
+        <label for="password1">Direccion:</label>
+        <input type="password" id="password1" name="password1" onchange="mostrarAlerta('password1', this.value)"><br><br>
+      </div>
+  </div>
+
+
+  <center><iframe width="560" height="315" src="https://www.youtube.com/embed/izl0h93LCfE?si=JHQdCm3P-AJFh6B3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br><br>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/1yL6QT2JUDCJTLYqrfP3bz?utm_source=generator" width="70%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+  </header>
+  <div class="datos" id="datos" style="display: none;">
+  </div>
+
+  <div class="container" id="carrito" style="display: none;">
+    <header>
+      <h2>Carrito de compras</h2>
+    </header>
+    <ul id="lista-carrito"></ul>
+    <br><br><br>
+    <header>
+      <div class="container" id="total">
+        <h2>Total de entrega</h2>
+        <ul id="total-compra"></ul>
+      </div>
+    </header>
+    <ul id="datos-entrega"></ul>
+
+    <center>
+      <div class="container">
+        <form onsubmit="return false">
+            <header>
+                <p><b>Nos encantaría saber en cuántas cajas te gustaría recibir tu pedido: </b></p>
+                <label for="cantidad2">Cantidad:</label><br>
+                <input type="range" id="cantidadRange2" name="cantidad2" min="1" max="25" value="1" onchange="actualizarCantidad('cantidadRange2', 'cantidadText2')" oninput="activarAlarma()">
+                <span id="cantidadText2">1</span><br><br>
+            </header>
+        </form>
+        
+      </div>
+    </center>
+
+    <center><button onclick="resetearCarrito()">Vaciar Carrito y Resetear Datos</button></center><br><br><br>
+
+    <div id="hora-actual"></div>
+
+    <script>
+        function mostrarInformacion(opcionEntrega) {
+            let info = '';
+            if (opcionEntrega === 'estandar') {
+                info = 'La entrega estándar suele demorar entre 3 y 5 días hábiles.';
+            } else if (opcionEntrega === 'express') {
+                info = 'La entrega express garantiza la entrega en 24 horas.';
+            } else if (opcionEntrega === 'prioritaria') {
+                info = 'La entrega prioritaria es la más rápida y se realiza en menos de 12 horas.';
+            }
+            document.getElementById('info_entrega').innerHTML = info;
+        }
+
+      function mostrarTotalCompra() {
+    var totalCompra = 0;
+
+    // Calcular el total sumando los precios de los productos en el carrito
+    carrito.forEach(function(item) {
+        totalCompra += item.precio;
+    });
+
+    // Mostrar el total de la compra en el elemento "total-compra"
+    var totalCompraElement = document.getElementById('total-compra');
+    totalCompraElement.innerHTML = '<center>Total de la compra: $' + totalCompra.toFixed(2) + '</center>';
+
+    // Mostrar los datos de entrega y el diseño seleccionado
+    var datosEntregaElement = document.getElementById('datos-entrega');
+    datosEntregaElement.innerHTML = '<center>Datos de entrega:</center>' +
+                                    '<center>Nombre: ' + document.getElementById('Nombre1').value + '</center>' +
+                                    '<center>Fecha preferente de entrega: ' + document.getElementById('fecha1').value + '</center>' +
+                                    '<center>Codigo postal: ' + document.getElementById('numero1').value + '</center>' +
+                                    '<center>Direccion: ' + document.getElementById('password1').value + '</center>';
+}
+
+
+      function actualizarCantidad(rangeId, spanId) {
+        var rangeValue = document.getElementById(rangeId).value;
+        document.getElementById(spanId).textContent = rangeValue;
+      }
+
+      function validarNumero(input) {
+            var numero = input.value.trim();
+            if (!numero.match(/^\d*$/)) {
+                alert("Por favor, ingrese solo números.");
+                input.value = "";
+            } else if (numero.length === 5) {
+                alert("¡Gracias por ingresar el código postal completo!");
+            }
+        }
+
+      function resetearCarrito() {
+        // Vaciar el carrito
+        carrito = [];
+        // Limpiar la lista de productos en el carrito
+        document.getElementById('lista-carrito').innerHTML = "<li>El carrito está vacío.</li>";
+        // Limpiar el total de la compra
+        document.getElementById('total-compra').textContent = "";
+        // Resetear los campos de datos de entrega
+        document.getElementById('Nombre1').value = "";
+        document.getElementById('fecha1').value = "";
+        document.getElementById('numero1').value = "";
+        document.getElementById('password1').value = "";
+      }
+      // Array para almacenar los productos en el carrito
+      var carrito = [];
+
+      // Función para agregar al carrito
+      function agregarAlCarrito(producto, precio, cantidad, diseño) {
+            var item = {
+                nombre: producto,
+                precio: precio * cantidad,
+                cantidad: cantidad,
+            };
+            carrito.push(item);
+            alert("Se agregó '" + producto + "' al carrito por $" + precio + " (Cantidad: " + cantidad +  ")");
+        }
+
+
+    
+      // Función para mostrar el contenido del carrito
+      function mostrarCarrito() {
+        var listaCarrito = document.getElementById('lista-carrito');
+        listaCarrito.innerHTML = ''; // Limpiar la lista antes de mostrarla
+
+        if (carrito.length === 0) {
+          listaCarrito.innerHTML = "<li>El carrito está vacío.</li>";
+        } else {
+          carrito.forEach(function (item) {
+            var li = document.createElement('li');
+            li.textContent = item.nombre + ' - $' + item.precio + ' (Cantidad: ' + item.cantidad + ')';
+            listaCarrito.appendChild(li);
+          });
+        }
+        // Mostrar el div del carrito
+        document.getElementById('carrito').style.display = 'block';
+
+        mostrarTotalCompra();
+      }
+
+      function mostrarAlerta(campo, valor) {
+              alert("Selección en " + campo + ": " + valor);
+          }
+          
+          function activarAlarma() {
+    alert("¡Has seleccionado un número en el rango!");
+}
+
+
+      // Función para mostrar la hora actual
+      function mostrarHoraActual() {
+        var fecha = new Date();
+        var hora = fecha.getHours();
+        var minutos = fecha.getMinutes();
+        var segundos = fecha.getSeconds();
+        var horaActual = hora + ":" + minutos + ":" + segundos;
+        document.getElementById("hora-actual").innerHTML = "Hora actual: " + horaActual;
+      }
+
+      // Actualizar la hora cada segundo
+      setInterval(mostrarHoraActual, 1000);
+    </script>
+
+</body>
+
+</html>
